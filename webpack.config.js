@@ -1,8 +1,9 @@
 const path = require('path');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = {
 	entry: {
-		app: './src/index.js'
+		app: './src/index.js',
 	},
 	output: {
 		path: path.resolve(__dirname, './dist'),
@@ -13,13 +14,56 @@ module.exports = {
 		overlay: true
 	},
 	module: {
-		rules: [{
-			test: /\.js$/,
-			loader: "babel-loader",
-			exclude: "/node_modules/"
-		}]
+		rules: [
+			{
+				test: /\.js$/,
+				loader: "babel-loader",
+				exclude: "/node_modules/"
+			}, {
+				test: /\.scss$/,
+				use: [
+					"style-loader",
+					MiniCssExtractPlugin.loader,
+					{
+						loader: "css-loader",
+						options: { sourceMap: true }
+					},
+					{
+						loader: "postcss-loader",
+						options: {
+							sourceMap: true,
+							config: { path: `./postcss.config.js` }
+						}
+					},
+					{
+						loader: "sass-loader",
+						options: { sourceMap: true }
+					}
+				]
+			},
+			{
+				test: /\.css$/,
+				use: [
+					"style-loader",
+					MiniCssExtractPlugin.loader,
+					{
+						loader: "css-loader",
+						options: { sourceMap: true }
+					},
+					{
+						loader: "postcss-loader",
+						options: {
+							sourceMap: true,
+							config: { path: `./postcss.config.js` }
+						}
+					}
+				]
+			}
+		]
 	},
-	resolve: {
-		extensions: ['.js', '.ts']
-	}
+	plugins: [
+		new MiniCssExtractPlugin({
+			filename: 'webpack.bundle.[name].css'
+		})
+	],
 };
