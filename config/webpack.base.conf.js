@@ -6,7 +6,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const PATHS = {
 	src: path.join(__dirname, '../src'),
 	dist: path.join(__dirname, '../build'),
-	assets: 'assets/',
+	assets: 'static/',
 	root: './'
 }
 
@@ -45,7 +45,15 @@ module.exports = {
 			options: {
 				name: '[name].[ext]'
 			}
-		}, {
+		},
+		{
+			test: /\.(woff2?|ttf|eot|svg|)(\?v=\d+\.\d+)?$/,
+			loader: "file-loader",
+			options: {
+				name: "[name].[ext]"
+			}
+		},
+		{
 			test: /\.scss$/,
 			use: [
 				'style-loader',
@@ -89,6 +97,11 @@ module.exports = {
 			]
 		}]
 	},
+	resolve: {
+		alias: {
+			'~': 'src'
+		}
+	},
 	plugins: [
 		new MiniCssExtractPlugin({
 			filename: `${PATHS.assets}css/[name].[hash].css`,
@@ -100,9 +113,15 @@ module.exports = {
 		}),
 		new CopyWebpackPlugin([
 			{
-				from: `${PATHS.src}/img`,
+				from: `${PATHS.src}/assets/img`,
 				to: `${PATHS.assets}img`
 			},
+		]),
+		new CopyWebpackPlugin([
+			{
+				from: `${PATHS.src}/assets/fonts`,
+				to: `${PATHS.assets}fonts`
+			}
 		])
 	],
 }
