@@ -3,9 +3,9 @@ const baseWebpackConfig = require("./webpack.base.conf.js");
 
 const buildWebpackConfig = merge(baseWebpackConfig, {
     mode: "production",
-
+    plugins: []
 });
 
-module.exports = new Promise((resolve, reject) => {
+module.exports = new Promise((resolve) => {
     resolve(buildWebpackConfig);
 });

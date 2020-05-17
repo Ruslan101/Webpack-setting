@@ -1,7 +1,7 @@
 {
-  "name": "webpak",
-  "version": "1.0.0",
-  "description": "",
+  "name": "webpack-basic-setting",
+  "version": "3.0.0",
+  "description": "Project with basic webpack configuration",
   "main": "webpack.config.js",
   "dependencies": {},
   "devDependencies": {
@@ -13,17 +13,21 @@
     "css-loader": "^3.5.3",
     "css-mqpacker": "^7.0.0",
     "cssnano": "^4.1.10",
+    "eslint-loader": "^4.0.2",
     "file-loader": "^6.0.0",
+    "fs": "0.0.1-security",
     "html-webpack-plugin": "^4.3.0",
     "mini-css-extract-plugin": "^0.9.0",
     "node-sass": "^4.14.1",
     "patch": "0.0.1",
     "postcss-loader": "^3.0.0",
+    "pug": "^2.0.4",
+    "pug-loader": "^2.4.0",
     "sass-loader": "^8.0.2",
     "style-loader": "^1.2.1",
     "webpack": "^4.43.0",
     "webpack-cli": "^3.3.11",
-    "webpack-dev-server": "^3.10.3",
+    "webpack-dev-server": "^3.11.0",
     "webpack-merge": "^4.2.2"
   },
   "scripts": {
@@ -34,6 +38,22 @@
     "> 1%",
     "last 3 version"
   ],
-  "author": "Ruslan",
-  "license": "ISC"
+  "author": "https://github.com/Ruslan101",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Ruslan101/webpack-basic-setting.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Ruslan101/webpack-basic-setting/issues"
+  },
+  "keywords": [
+    "webpack",
+    "webpack4",
+    "merge",
+    "bable",
+    "bable7",
+    "scss",
+    "pug"
+  ]
 }
